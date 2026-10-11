@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "generatedAt": null,
+  "timeZone": "Australia/Melbourne",
+  "sportsUpdated": [],
+  "errors": [],
+  "games": [],
+  "dataPolicy": {
+    "confirmed": "Only published official starters/batting orders",
+    "projected": "Explicitly labelled editorial projections",
+    "unknown": "No independently confirmed lineup"
+  }
+}

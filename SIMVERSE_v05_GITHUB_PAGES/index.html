@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08111e"><meta name="description" content="SIMVERSE: interactive sports simulation command centre for NBA and MLB.">
+  <title>SIMVERSE — Sports Intelligence HQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#hq" aria-label="SIMVERSE home"><span class="emblem">S<span>V</span></span><span><strong>SIMVERSE</strong><small>SPORTS INTELLIGENCE HQ</small></span></a>
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="hq"><span class="tabIcon">⌂</span> Command HQ</button>
+      <button class="tab" data-view="arena"><span class="tabIcon">◎</span> Simulation Arena</button>
+      <button class="tab" data-view="data"><span class="tabIcon">▤</span> Data Desk</button>
+      <button class="tab" data-view="lab"><span class="tabIcon">◈</span> Scenario Lab</button>
+    </nav>
+    <div class="topRight"><span class="demoStatus"><span class="statusDot"></span> DEMO ENGINE</span><span class="build">v0.5.0</span></div>
+  </header>
+  <main>
+    <section id="view-hq" class="view active" aria-label="Command HQ">
+      <div class="sectionIntro"><div><div class="eyebrow">OPERATIONS DECK / LEVEL 01</div><h1>Your sports command centre.</h1><p>Six analyst stations, one live simulation network. Select a specialist or head to the arena to watch plays unfold.</p></div><button class="mainAction" id="hqToArena">Launch simulation <span>↗</span></button></div>
+      <div class="hqLayout">
+        <div class="stagePane"><div class="paneHeader"><div><span class="smallCap">HEADQUARTERS • INTERACTIVE 3D-STYLE VIEW</span><h2>Operations floor</h2></div><span class="liveTag"><span class="statusDot"></span> STATIONS ONLINE</span></div>
+          <div class="hqStage"><canvas id="hqCanvas" width="1300" height="740" aria-label="Isometric command centre with six working analyst stations and central commander"></canvas><div class="sceneOverlay topLeft"><span class="miniSquare">⌗</span> SELECT A STATION TO INSPECT</div><div class="sceneOverlay bottomLeft" id="hqSceneHint">Click an analyst workstation or use the roster at right</div></div>
+          <div class="statusRail"><div><span class="railDot"></span> <strong>6</strong> analyst stations online</div><div><span class="railDot blue"></span> <strong id="hqCurrentSport">NBA</strong> model selected</div><div><span class="railDot gold"></span> <strong id="hqCurrentMode">PRESEASON</strong> ruleset</div></div>
+        </div>
+        <aside class="rightStack"><section class="surface stationPane"><div class="cardHeading"><h3>Team roster</h3><span class="muted">SELECT TO INSPECT</span></div><div id="stationList" class="stationList"></div></section>
+          <section class="surface inspectPane"><div class="cardHeading"><h3>Analyst briefing</h3><span class="specBadge" id="stationTag">01 / 06</span></div><div id="stationDetails" aria-live="polite"></div><button class="thinButton" id="openArenaFromAnalyst">Review simulation floor →</button></section></aside>
+      </div>
+      <div class="tripleStrip"><div><small>ENGINE STATUS</small><strong>Responsive sequence model</strong><span>Animated possession and pitch phases</span></div><div><small>GAME INTELLIGENCE</small><strong>Season-aware assumptions</strong><span>Preseason / Regular / Playoffs</span></div><div><small>DATA INTEGRITY</small><strong>Source provenance required</strong><span>Unknown lineups remain unknown</span></div></div>
+    </section>
+
+    <section id="view-arena" class="view" aria-label="Simulation Arena">
+      <div class="sectionIntro"><div><div class="eyebrow">SIMULATION FLOOR / LEVEL 02</div><h1>Watch the play develop.</h1><p>Follow positions, possession phases and live scoring. Step through individual actions to inspect what changed.</p></div><div class="statusTag">ILLUSTRATIVE GAMEPLAY • NOT LIVE TRACKING</div></div>
+      <div class="arenaLayout"><div class="arenaLeft">
+        <section class="surface arenaPane"><div class="arenaBanner"><span class="smallCap">SIMULATION FEED / CAM 01</span><div class="cameraGroup"><button class="tinyBtn active" data-cam="broadcast">Broadcast</button><button class="tinyBtn" data-cam="tactical">Tactical</button><button class="tinyBtn" data-cam="close">Close</button></div></div><div class="arenaScene"><canvas id="arenaCanvas" width="1280" height="710" aria-label="Animated basketball or baseball simulation"></canvas><div class="cornerOverlay upper"><span id="actionPhase">PREGAME</span><span id="actionSub">Prepare the model to begin</span></div><div class="cornerOverlay lower"><span id="arenaHint">Players move between phases • Visualisation is not real player tracking</span></div></div>
+          <div class="scoreboard"><div class="teamScore"><div class="crest" id="awayCrest">BOS</div><div class="teamCopy"><span id="awayLabel">BOSTON CELTICS</span><strong id="awayScore">0</strong></div></div><div class="centerScore"><span id="periodText">Q1</span><strong id="timeText">12:00</strong><small id="statusText">AWAITING TIP-OFF</small></div><div class="teamScore reverse"><div class="crest" id="homeCrest">PHI</div><div class="teamCopy"><span id="homeLabel">PHILADELPHIA 76ERS</span><strong id="homeScore">0</strong></div></div></div>
+          <div class="transport"><button class="primaryButton" id="playPause">▶ Play game</button><button class="controlButton" id="step">Step one play →</button><button class="controlButton" id="reset">↺ Reset</button><div class="rateGroup"><span>Speed</span><button class="rate active" data-rate="1">1×</button><button class="rate" data-rate="2">2×</button><button class="rate" data-rate="4">4×</button></div></div>
+        </section>
+        <section class="surface logPane"><div class="cardHeading"><h3>Play-by-play</h3><span class="muted" id="playCount">0 sequences</span></div><div id="playLog" class="playLog" role="log" aria-live="polite"></div></section>
+      </div>
+      <aside class="arenaRight"><section class="surface controlPane"><div class="cardHeading"><h3>Match configuration</h3><span class="specBadge">SCENARIO</span></div>
+        <label>SPORT</label><div class="toggle" id="sportToggle"><button class="chosen" data-sport="NBA">NBA</button><button data-sport="MLB">MLB</button></div>
+        <div class="selectPair"><div><label for="awayPick">AWAY</label><select id="awayPick"></select></div><div><label for="homePick">HOME</label><select id="homePick"></select></div></div>
+        <label>SEASON TYPE</label><div class="toggle" id="seasonToggle"><button class="chosen" data-season="preseason">Preseason</button><button data-season="regular">Regular</button><button data-season="playoffs">Playoffs</button></div>
+        <label>ROTATION / WORKLOAD</label><div class="toggle" id="scenarioToggle"><button data-scenario="A">Starter+</button><button class="chosen" data-scenario="B">Expected</button><button data-scenario="C">Bench+</button></div>
+        <div class="rangeLabel"><label for="restriction">RESTRICTION STRESS</label><span id="restrictionValue">25%</span></div><input id="restriction" type="range" min="0" max="90" value="25" step="5"><p class="hint">Scenario test, not a verified restriction. Higher values force shorter starter / pitcher exposure.</p>
+        <div class="rangeLabel"><label for="tempo">TEMPO / AGGRESSION</label><span id="tempoValue">100</span></div><input id="tempo" type="range" min="85" max="115" value="100" step="1">
+      </section><section class="surface liveAnalysis"><div class="cardHeading"><h3>On-court intelligence</h3><span class="muted">SCENARIO ESTIMATES</span></div><div class="miniTwo"><div><small>MODEL WIN LEAN</small><strong id="liveLean">50–50</strong></div><div><small>ROTATION STATUS</small><strong id="liveRotation">Starter-heavy</strong></div><div><small>PLAY TYPE</small><strong id="liveType">—</strong></div><div><small>UNCERTAINTY</small><strong id="liveRisk">Elevated</strong></div></div><p class="hint">Live values are illustrative game-state heuristics. Use Scenario Lab for simulated outcome distributions.</p></section>
+      <section class="surface"><div class="cardHeading"><h3>Game details</h3></div><div id="gameDetails" class="detailRows"></div></section></aside></div>
+    </section>
+
+    <section id="view-data" class="view" aria-label="Data Desk">
+      <div class="sectionIntro"><div><div class="eyebrow">INTELLIGENCE TERMINAL / LEVEL 03</div><h1>Trust the inputs.</h1><p>Fixture feeds, availability, expected rotations, starting pitchers and data provenance belong here—not hidden in the animation.</p></div><button class="mainAction" id="refreshData">Refresh snapshot <span>↻</span></button></div>
+      <div class="dataGrid"><section class="surface dataSummary"><div class="cardHeading"><h3>Data freshness</h3><span class="specBadge" id="freshnessBadge">UNVERIFIED</span></div><div class="dataHeadline" id="dataHeadline">Demo mode • no confirmed lineup feed</div><p id="dataMessage" class="mutedPara">The app can read a published data/snapshot.json file, but it will never silently convert a projected lineup into a confirmed one.</p><div class="infoGrid"><div><small>LAST REFRESH</small><strong id="dataGenerated">Never</strong></div><div><small>FIXTURES FOUND</small><strong id="dataFixtures">0</strong></div><div><small>DATA STATUS</small><strong id="dataStatus">DEMO</strong></div><div><small>TIMEZONE</small><strong>Australia/Melbourne</strong></div></div></section>
+      <section class="surface dataSummary"><div class="cardHeading"><h3>Publication rules</h3><span class="muted">HARD SAFETY GATES</span></div><div class="rulesList"><div><span class="ruleIcon good">✓</span><div><strong>Confirmed</strong><p>Only published starters, batting orders or minutes caps from a dated, attributable source.</p></div></div><div><span class="ruleIcon warn">!</span><div><strong>Projected</strong><p>Explicitly labelled estimates, with provenance and age visible.</p></div></div><div><span class="ruleIcon neutral">?</span><div><strong>Unknown</strong><p>Missing information stays unknown. No invented lineup, injury or pitch limit.</p></div></div></div></section></div>
+      <section class="surface fixturesPane"><div class="cardHeading"><h3>Available fixtures</h3><span class="muted" id="fixtureCountLabel">No verified fixtures loaded</span></div><div id="fixtureList" class="fixtureList"><p class="mutedPara">No published fixtures are available in this demo snapshot. Connect an automated feed to populate them.</p></div></section>
+      <div class="footerNotice">This standalone static site cannot guarantee daily updates on its own. Use the included snapshot-generation workflow or connect a licensed provider and scheduled deployment. Always check actual game status and source timestamp before making decisions.</div>
+    </section>
+
+    <section id="view-lab" class="view" aria-label="Scenario Lab">
+      <div class="sectionIntro"><div><div class="eyebrow">QUANTITATIVE ENGINE / LEVEL 04</div><h1>See the range, not just a score.</h1><p>Run reproducible simulations with role-aware scenarios. Compare expected rotations against starter-heavy and bench-heavy outcomes.</p></div><button class="mainAction" id="runLab">Run 10,000 simulations <span>▸</span></button></div>
+      <div class="labTop"><div class="surface labConfig"><div class="cardHeading"><h3>Model assumptions</h3><span class="specBadge">EXPLORATORY</span></div><div class="assumptionList" id="assumptions"></div></div><div class="surface labConfig"><div class="cardHeading"><h3>Monte Carlo output</h3><span class="muted" id="labStatus">Not run</span></div><div class="labMetrics"><div><small>AWAY WIN %</small><strong id="labAway">—</strong></div><div><small>HOME WIN %</small><strong id="labHome">—</strong></div><div><small>MEAN FINAL</small><strong id="labScore">—</strong></div><div><small>80% TOTAL RANGE</small><strong id="labInterval">—</strong></div></div></div></div>
+      <div class="labBottom"><div class="surface graphCard"><div class="cardHeading"><h3>Total-points / runs distribution</h3><span class="muted">P10–P90 shown in results</span></div><canvas id="histCanvas" width="940" height="330" aria-label="Histogram of simulated score totals"></canvas></div><div class="surface graphCard"><div class="cardHeading"><h3>Rotation sensitivity</h3><span class="muted">A / B / C comparison</span></div><div id="scenarioResults" class="scenarioResults"><p class="mutedPara">Run the lab to compare three workload assumptions. Output is demonstrative and not calibrated betting advice.</p></div></div></div>
+    </section>
+  </main>
+  <footer class="siteFooter"><span>SIMVERSE LABS · SYNTHETIC MODEL · VERSION 0.5</span><span>NBA / MLB · MODULAR MULTI-SPORT CORE</span><span>Developed for exploration, not validated wagering decisions.</span></footer>
+</div>
+<script src="app.js" defer></script>
+</body></html>

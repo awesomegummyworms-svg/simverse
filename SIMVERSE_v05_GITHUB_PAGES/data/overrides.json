@@ -1,0 +1,4 @@
+{
+  "games": {},
+  "instructions": "Only add editorial projected lineups or restrictions if you have dated evidence. Use event keys NBA-<ESPN event id> or MLB-<MLB gamePk>. Every restriction must have player, team, source, updatedAt and explicit certainty."
+}
