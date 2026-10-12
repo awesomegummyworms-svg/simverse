@@ -1,15 +1,78 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070f1c">
+<meta name="description" content="SIMVERSE Sports Intelligence Command Centre: NBA and MLB upcoming-game simulations, named-player models, source-aware lineups and scenario analysis.">
+<title>SIMVERSE | Sports Intelligence Headquarters</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="shell">
+ <header class="topbar">
+  <button class="brand" data-view="hq" aria-label="SIMVERSE home"><span class="brandmark">S<span>↗</span></span><span><strong>SIMVERSE</strong><small>SPORTS INTELLIGENCE HQ</small></span></button>
+  <nav class="nav" aria-label="Main navigation"><button class="navitem active" data-view="hq">Command HQ</button><button class="navitem" data-view="arena">Simulation Arena</button><button class="navitem" data-view="data">Data & Players</button><button class="navitem" data-view="lab">Simulation Lab</button></nav>
+  <div class="headerRight"><span class="statusChip" id="sourceChip"><i class="statusDot orange"></i> DATA NOT VERIFIED</span><span class="version">SYSTEM v0.6</span></div>
+ </header>
+ <main>
+ <section class="screen active" id="page-hq">
+  <div class="pageHead"><div><div class="eyebrow">CONTROL CENTRE / MISSION OVERVIEW</div><h1>Welcome to your <em>command floor.</em></h1><p>Run real upcoming matchups through player-aware models while your six analyst stations track rotations, opponents, game flow and uncertainty.</p></div><button class="mainBtn" id="launchBtn">Enter simulation arena <span>↗</span></button></div>
+  <div class="commandVisual" id="commandVisual" role="group" aria-label="SIMVERSE cinematic command headquarters with interactive analyst stations">
+    <img class="hqImage" src="assets/command-hq.webp" alt="Futuristic sports simulation HQ with a central commander, six analysts, giant NBA and MLB screens and glowing analytics panels" loading="eager">
+    <div class="visualVignette"></div>
+    <div class="visualCorner top"><span class="liveDot"></span> SIX STATIONS ONLINE <span class="pipe">/</span> CENTRAL DIRECTOR ACTIVE</div>
+    <div class="visualCorner mock">ART DIRECTION CONCEPT · SCREEN CONTENT IS ILLUSTRATIVE</div>
+    <div class="visualCorner bottom"><span>◉</span> SELECT ANALYST WORKSTATIONS <span class="pipe">/</span> LIVE WORKFLOW DEMO</div>
+    <button class="hQHotspot h1" data-analyst="0" aria-label="Inspect rotation analyst"><span>01</span><i></i></button>
+    <button class="hQHotspot h2" data-analyst="1" aria-label="Inspect scouting desk"><span>02</span><i></i></button>
+    <button class="hQHotspot h3" data-analyst="2" aria-label="Inspect simulation operations"><span>03</span><i></i></button>
+    <button class="hQHotspot h4" data-analyst="3" aria-label="Inspect availability analyst"><span>04</span><i></i></button>
+    <button class="hQHotspot h5" data-analyst="4" aria-label="Inspect broadcast director"><span>05</span><i></i></button>
+    <button class="hQHotspot h6" data-analyst="5" aria-label="Inspect calibration and risk desk"><span>06</span><i></i></button>
+  </div>
+  <div class="hqDash">
+    <section class="surface missionList"><div class="moduleTitle"><span><i class="tealMark"></i> UPCOMING MISSION QUEUE</span><button class="quietBtn" data-view="data">Open fixture desk ↗</button></div><div id="hqFixtures" class="missionRows"><div class="emptyMini">Syncing published fixtures…</div></div></section>
+    <section class="surface operatorPanel"><div class="moduleTitle"><span><i class="goldMark"></i> OPERATOR BRIEF</span><span class="micro" id="analystCode">STATION 01 / 06</span></div><div class="operatorTop"><span class="operatorAvatar" id="analystSymbol">◷</span><div><h3 id="analystTitle">Rotation Analyst</h3><p id="analystSub">Projected minutes & lineup intelligence</p></div><span class="greenPill">WORKING</span></div><p class="operatorText" id="analystInsight">Click an analyst marker on the headquarters image.</p><div class="barGraph"><span class="barGraphLabel">Current activity</span><div class="barGraphFill"><i id="analystLoad" style="width:55%"></i></div></div><button class="subtleAction" data-view="arena">Inspect active game sequence ↗</button></section>
+    <section class="surface integrityPanel"><div class="moduleTitle"><span><i class="purpleMark"></i> INTELLIGENCE STATUS</span><span class="micro" id="dataAge">PENDING</span></div><div class="integrityRows"><div><small>Fixture feed</small><strong id="feedState">Connecting…</strong></div><div><small>Named rosters</small><strong id="rosterState">Awaiting data</strong></div><div><small>Last verified</small><strong id="lastVerified">Never</strong></div><div><small>Simulation mode</small><strong id="modelState">Exploratory</strong></div></div><p class="mutedInfo">The visualized workers are scripted UI agents. They are not autonomous analysts performing independent live research.</p></section>
+  </div>
+ </section>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh"
-        content="0; url=./SIMVERSE_v05_GITHUB_PAGES/">
-  <title>Opening SIMVERSE</title>
-</head>
-<body>
-  <a href="./SIMVERSE_v05_GITHUB_PAGES/">
-    Launch SIMVERSE
-  </a>
-</body>
-</html>
+ <section class="screen" id="page-arena">
+  <div class="pageHead"><div><div class="eyebrow">SIMULATION ARENA / GAME ENGINE</div><h1>See how a game <em>unfolds.</em></h1><p>Named athletes, matchup assignments, progressive motion, per-player shot tendencies and period-aware substitutions. This is model-generated action, not tracking video.</p></div><div class="rowButtons"><button class="outlineBtn" data-view="data">View lineup sources</button><button class="outlineBtn" data-view="lab">Run 10,000 simulations</button></div></div>
+  <div class="arenaGrid"><div class="arenaLeft">
+    <section class="surface arenaShell"><div class="arenaToolbar"><div class="toolbarTitle"><span class="liveDot"></span><strong id="feedTitle">NBA • BASKETBALL SIMULATION</strong><span class="tinyInfo" id="feedQuality">PLAYER ROSTERS: UNVERIFIED</span></div><div class="cameraControls"><button class="cam active" data-camera="broadcast">Broadcast</button><button class="cam" data-camera="tactical">Tactical</button><button class="cam" data-camera="court">Courtside</button></div></div>
+      <div class="arenaStage"><canvas id="gameCanvas" width="1440" height="810" aria-label="Continuous animated basketball or baseball simulation with named players and dynamic game phases"></canvas><div class="stageTopLeft"><span id="playPhase">SIMULATION READY</span><strong id="playTitle">Select a game, then press Play</strong></div><div class="stageTopRight"><span id="scenarioLabel">PRESEASON • EXPECTED</span><span id="rosterBadge">DEMO PLAYER ROLES</span></div><div class="stageBottom"><span id="arenaWhy">Game events are stochastic, not live real-world play tracking.</span><span>◉ CAMERA 01</span></div></div>
+      <div class="scoreboard"><div class="sideScore"><span class="teamCrest" id="crestA">BOS</span><div><small id="teamAName">BOSTON CELTICS</small><strong id="scoreA">0</strong></div></div><div class="middleScore"><span id="period">Q1</span><strong id="clock">12:00</strong><small id="gameStatus">NOT STARTED</small></div><div class="sideScore home"><div><small id="teamBName">PHILADELPHIA 76ERS</small><strong id="scoreB">0</strong></div><span class="teamCrest" id="crestB">PHI</span></div></div>
+      <div class="transport"><button class="mainBtn" id="playPause">▶ PLAY SIMULATION</button><button class="outlineBtn" id="stepPlay">NEXT PLAY →</button><button class="outlineBtn" id="resetGame">↻ RESET</button><span class="speedLabel">SPEED</span><button class="rate chosen" data-rate="1">1×</button><button class="rate" data-rate="2">2×</button><button class="rate" data-rate="4">4×</button></div>
+    </section>
+    <div class="arenaLower"><section class="surface"><div class="moduleTitle"><span>PLAY-BY-PLAY</span><span class="micro" id="playCount">0 PLAYS</span></div><div class="eventFeed" id="eventFeed"><div class="emptyMini">Press Play to begin the generated event sequence.</div></div></section><section class="surface"><div class="moduleTitle"><span>ON-FLOOR UNITS</span><span class="micro">MODELLED EXPOSURE</span></div><div class="units" id="floorUnits">Player names and rotations appear after roster data loads.</div><div class="sourceHint" id="lineupDisclaimer">Status unknown until published source is available.</div></section></div>
+  </div><aside class="arenaSidebar">
+    <section class="surface settings"><div class="moduleTitle"><span>GAME OPERATIONS</span><span class="micro">CONTROL BAY 01</span></div>
+      <label class="fieldLabel">SPORT</label><div class="toggle" id="sportButtons"><button class="chosen" data-sport="NBA">NBA</button><button data-sport="MLB">MLB</button></div>
+      <label class="fieldLabel" for="fixtureSelect">UPCOMING / LIVE FIXTURE</label><select id="fixtureSelect" class="select"><option value="">Choose a published fixture</option></select>
+      <p class="formHint" id="fixtureDetail">Manual matchup mode is available if no reliable fixture is loaded.</p>
+      <div class="doubleField"><div><label class="fieldLabel" for="awaySelect">AWAY</label><select class="select" id="awaySelect"></select></div><div><label class="fieldLabel" for="homeSelect">HOME</label><select class="select" id="homeSelect"></select></div></div>
+      <label class="fieldLabel">SEASON RULES</label><div class="toggle season" id="seasonButtons"><button class="chosen" data-season="preseason">Preseason</button><button data-season="regular">Regular</button><button data-season="playoffs">Playoffs</button></div>
+      <label class="fieldLabel">ROTATION / WORKLOAD</label><div class="toggle" id="scenarioButtons"><button data-scenario="A">Starter+</button><button class="chosen" data-scenario="B">Expected</button><button data-scenario="C">Bench+</button></div>
+      <div class="rangeLine"><label for="restriction">UNCONFIRMED RESTRICTION STRESS</label><b id="restrictionVal">0%</b></div><input type="range" id="restriction" min="0" max="85" value="0" step="5"><p class="formHint">Manual sensitivity input, never presented as a verified player's minutes limit.</p>
+    </section>
+    <section class="surface playerFocus"><div class="moduleTitle"><span>PLAYER SPOTLIGHT</span><span class="micro" id="focusStatus">MODEL-BASED</span></div><div class="focusRow"><img class="portrait" id="focusImage" alt="Athlete portrait if a sourced image is available"><div><span class="eyebrow" id="focusTeam">ROSTER PENDING</span><h3 id="focusName">Select a player</h3><p id="focusRole">Individual matchups and roles</p></div></div><div class="focusTraits" id="focusTraits"></div><div class="sourceHint" id="focusSource">A named roster must be loaded before individual style estimates are available.</div></section>
+    <section class="surface"><div class="moduleTitle"><span>TACTICAL REPORT</span><span class="micro">CURRENT MATCHUP</span></div><div id="tacticalReport" class="tacticalReport"><div class="emptyMini">Matchup insights update with each play.</div></div></section>
+  </aside></div>
+ </section>
+
+ <section class="screen" id="page-data">
+  <div class="pageHead"><div><div class="eyebrow">INTELLIGENCE DESK / SOURCE VERIFICATION</div><h1>Real games. <em>Honest inputs.</em></h1><p>Upcoming NBA/MLB schedules in Melbourne time, roster identities, reported batting orders, minutes samples, probable pitchers, and source timestamps.</p></div><button class="mainBtn" id="refreshButton">↻ REFRESH LIVE SOURCES</button></div>
+  <div class="dataHeaderGrid"><section class="surface"><div class="moduleTitle"><span>DATA HEALTH</span><span class="micro" id="dataMode">OFFLINE / SNAPSHOT</span></div><div class="healthDisplay"><strong id="healthTitle">Connecting to source…</strong><p id="healthMessage">The hosted scheduler updates published schedule snapshots. Direct browser refresh also attempts supported feeds.</p></div><div class="healthMetrics"><div><small>PUBLISHED GAMES</small><strong id="healthGames">—</strong></div><div><small>ROSTERED TEAMS</small><strong id="healthTeams">—</strong></div><div><small>LAST FETCH</small><strong id="healthWhen">—</strong></div></div></section>
+    <section class="surface sourceRules"><div class="moduleTitle"><span>MANDATORY SOURCE RULES</span><span class="micro">DATA GOVERNANCE</span></div><div class="rule"><b>CONFIRMED</b><p>Only complete lineups officially reported by a source; box-score starters usually appear at or after tip-off.</p></div><div class="rule"><b>PROJECTED</b><p>Named estimated starters or minutes based on evidence. Always visibly marked as a projection.</p></div><div class="rule"><b>UNKNOWN</b><p>Missing absences, pitch limits and injuries stay unknown. No data cannot be interpreted as zero restrictions.</p></div></section></div>
+  <div class="dataBodyGrid"><section class="surface fixturesPanel"><div class="moduleTitle"><span>UPCOMING MATCHUPS</span><span class="micro" id="fixtureNum">0 EVENTS</span></div><div class="fixtureFilters"><button class="filter chosen" data-filter="ALL">All</button><button class="filter" data-filter="NBA">NBA</button><button class="filter" data-filter="MLB">MLB</button></div><div id="fixtures" class="fixtures"><div class="emptyMini">Published fixtures will appear when the source responds.</div></div></section>
+   <section class="surface playersPanel"><div class="moduleTitle"><span>PLAYER INTELLIGENCE</span><span class="micro">REAL ROSTER IDs WHEN SOURCED</span></div><div class="doubleField"><div><label class="fieldLabel" for="playerSport">SPORT</label><select class="select" id="playerSport"><option>NBA</option><option>MLB</option></select></div><div><label class="fieldLabel" for="playerTeam">TEAM</label><select class="select" id="playerTeam"></select></div></div><div id="playerRows" class="playerRows"><div class="emptyMini">Choose a team with a published roster.</div></div><div class="profilePanel" id="profilePanel">Choose a player to see provenance, recent minutes, availability and modelled traits.</div></section></div>
+ </section>
+
+ <section class="screen" id="page-lab">
+  <div class="pageHead"><div><div class="eyebrow">QUANTITATIVE ENGINE / SCENARIO LAB</div><h1>Test the outcome. <em>Stress the assumptions.</em></h1><p>Three scenario models, 10,000 simulations each. Compare minutes, bench exposure, pitch limits, mean score, variance, game totals and rotation sensitivity.</p></div><button class="mainBtn" id="runMonte">RUN 30,000 GAMES ↗</button></div>
+  <div class="labGrid"><section class="surface labMain"><div class="moduleTitle"><span>SIMULATION DISTRIBUTIONS</span><span class="micro" id="mcProgress">AWAITING MODEL RUN</span></div><div class="labMetrics"><div><small>AWAY WIN</small><strong id="mcAway">—</strong></div><div><small>HOME WIN</small><strong id="mcHome">—</strong></div><div><small>PROJECTED SCORE</small><strong id="mcScore">—</strong></div><div><small>10–90% TOTAL</small><strong id="mcInterval">—</strong></div></div><canvas id="distCanvas" width="940" height="260" aria-label="Distribution of 10,000 simulated game totals"></canvas><div id="scenarioResults" class="scenarioResults"></div><p class="disclosure" id="mcDisclosure">No validated prediction has been run. These results are exploratory, particularly when input stats are unavailable or preseason rotations are not confirmed.</p></section>
+    <aside class="labSide"><section class="surface"><div class="moduleTitle"><span>MODEL ASSUMPTIONS</span><span class="micro">AUDIT TRAIL</span></div><div class="assumptions" id="assumptionRows"></div></section><section class="surface"><div class="moduleTitle"><span>STRENGTHS VS WEAKNESSES</span><span class="micro">CURRENT ROSTERS</span></div><div id="matchupLab" class="matchupLab">Select a game to inspect what drives the outcomes.</div></section><section class="surface"><div class="moduleTitle"><span>MODEL RELIABILITY</span><span class="micro">NEEDS CALIBRATION</span></div><p class="disclosure">Historical backtesting is not yet connected. Statistical outputs are exploratory and are not verified betting edges. Player motion depicts sampled events—not an exact prediction of real decisions.</p></section></aside>
+  </div>
+ </section>
+ </main>
+ <footer><span>© SIMVERSE LABS · SPORTS INTELLIGENCE</span><span>NBA + MLB · TIMEZONE: MELBOURNE · DATA PROVENANCE FIRST</span><span id="footerBuild">v0.6.0 · VISUAL MODEL</span></footer>
+</div>
+<script src="engine.js"></script><script src="app.js"></script>
+</body></html>

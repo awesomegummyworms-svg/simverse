@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+site/
+.DS_Store
+node_modules/
+.env*

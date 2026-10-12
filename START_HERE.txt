@@ -1,0 +1,53 @@
+SIMVERSE v0.6 — INSTALLATION OPTIONS
+====================================
+Existing repo: https://github.com/awesomegummyworms-svg/simverse
+Expected GitHub Pages: https://awesomegummyworms-svg.github.io/simverse/
+
+OPTION 1 — SIMPLEST VISUAL UPGRADE: SIMVERSE_v06_QUICK_UPLOAD.zip
+1. Unzip. You'll see the directory SIMVERSE_v06_REALPLAYER.
+2. Open your GitHub repository at its ROOT (the page showing the existing
+   SIMVERSE_v05_GITHUB_PAGES folder and the root index.html).
+3. Choose Add file → Upload files and upload the SIMVERSE_v06_REALPLAYER folder
+   WITH its subfolders (assets, data). Confirm it appears beside the v05 folder.
+   If your browser cannot upload a whole directory, upload its CONTENTS into
+   a newly created SIMVERSE_v06_REALPLAYER directory, preserving names/paths.
+4. Back at the root of the repo, click the EXISTING root index.html, click
+   Edit (pencil), and replace BOTH occurrences of
+       SIMVERSE_v05_GITHUB_PAGES
+   with:
+       SIMVERSE_v06_REALPLAYER
+   Commit the change to main. DO NOT click Create new file inside the folder.
+5. Wait for Pages to rebuild. Reload your existing SIMVERSE URL.
+   This is a static visual/client-side upgrade only. For dependable recurring
+   server-side fixture refresh, follow Option 2 instead.
+
+OPTION 2 — RECOMMENDED FULL WORKFLOW: SIMVERSE_v06_GITHUB_ROOT.zip
+1. Extract the ZIP. Its files (index.html, app.js, engine.js, styles.css,
+   sim_worker.js, assets/, data/, scripts/, tests/, .github/) belong directly
+   at the TOP LEVEL of your SIMVERSE GitHub repo, not inside a folder.
+2. Easiest on Windows: Install GitHub Desktop; choose File > Clone repository,
+   select awesomegummyworms-svg/simverse, and clone it.
+3. Copy ALL contents of the extracted ZIP to the cloned repository directory,
+   replacing the old ROOT index.html redirect.
+4. Commit your changes in GitHub Desktop, then Push origin.
+5. In the GitHub repo open Settings > Pages. Change Source from
+   'Deploy from a branch' to 'GitHub Actions'.
+6. In Actions, run 'Deploy SIMVERSE 0.6 to GitHub Pages'. After it succeeds,
+   run 'Refresh NBA and MLB data + deploy'. The latter workflow also checks
+   for updated public NBA/MLB fixtures and profiles hourly thereafter,
+   subject to API availability and GitHub workflow scheduling.
+7. Site stays at the same GitHub Pages URL.
+
+KNOWN LIMITS
+- Cinematic command-room image is ART, not a navigable 3D scene.
+- Gameplay avatars use player NAME/ROLE/jersey and modelled tendencies when
+  published player data is available, not face-perfect photoreal models.
+- First published data/snapshot.json intentionally has 0 fixtures: no made-up
+  upcoming schedule or named starters. Refresh workflow must run successfully.
+- Injury/minutes caps only considered verified if documented and sourced.
+- NBA boxscore starters often only appear at/after tip-off. Inferred starts
+  remain projected, not confirmed.
+- Preseason/regular/playoffs differ; model is EXPLORATORY not backtested.
+- We cannot directly publish into your GitHub repo from this chat yet.
+
+Files in the full zip include a README and MASTER SPEC with details.
